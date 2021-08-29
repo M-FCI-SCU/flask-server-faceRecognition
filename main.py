@@ -89,9 +89,13 @@ def start_face_detection_recognition(frame):
             face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
 
             # If a match was found in known_face_encodings, just use the first one.
-            best_match_index = np.argmin(face_distances)
-            if matches[best_match_index]:
-                print('we have that face')
+            if len(face_distances) != 0:
+                best_match_index = np.argmin(face_distances)
+                if matches[best_match_index]:
+                    print('we have that face')
+                else:
+                    save_face(face_encoding, rgb_small_frame)
+                    get_faces()
             else:
                 save_face(face_encoding, rgb_small_frame)
                 get_faces()
