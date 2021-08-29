@@ -1,5 +1,3 @@
-import asyncio
-
 import cv2
 from flask import Flask, current_app
 from flask_socketio import SocketIO, emit
